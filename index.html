@@ -1,252 +1,738 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hu">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digitális Kultúra – Programozási Feladatsor</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&display=swap');
-:root {
-  --bg:#f4f0e6;--paper:#faf7f1;--ink:#1a1208;--ink2:#3a2e1a;--ink3:#6b5640;
-  --rule:#d8c8aa;--a1:#2e8b57;--a2:#2471a3;--a3:#d35400;--a4:#922b21;--a5:#6c3483;
-  --hl:#b7860b;--cbg:#181008;--cfg:#e8d5b0;--cg:#7ec8a0;--cb:#7ab8d9;
-  --cy:#e8c06a;--cp:#c09ee0;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:'Fraunces',Georgia,serif;min-height:100vh}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:999}
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Digitális Kultúra – Programozási Feladatsor</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&display=swap');
+            :root {
+                --bg: #f4f0e6;
+                --paper: #faf7f1;
+                --ink: #1a1208;
+                --ink2: #3a2e1a;
+                --ink3: #6b5640;
+                --rule: #d8c8aa;
+                --a1: #2e8b57;
+                --a2: #2471a3;
+                --a3: #d35400;
+                --a4: #922b21;
+                --a5: #6c3483;
+                --hl: #b7860b;
+                --cbg: #181008;
+                --cfg: #e8d5b0;
+                --cg: #7ec8a0;
+                --cb: #7ab8d9;
+                --cy: #e8c06a;
+                --cp: #c09ee0;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: 'Fraunces', Georgia, serif;
+                min-height: 100vh;
+            }
+            body::before {
+                content: '';
+                position: fixed;
+                inset: 0;
+                background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+                pointer-events: none;
+                z-index: 999;
+            }
 
-header{background:var(--ink);color:var(--bg);padding:2.5rem 2rem 2rem;position:relative}
-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:5px;
-  background:linear-gradient(90deg,var(--a1) 0%,var(--a2) 20%,var(--a3) 40%,var(--a4) 60%,var(--a5) 80%,var(--hl) 100%)}
-.hi{max-width:920px;margin:0 auto}
-.kl{font-family:'IBM Plex Mono',monospace;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:#a08060;margin-bottom:.6rem}
-header h1{font-size:clamp(1.6rem,3.5vw,2.5rem);font-weight:700;line-height:1.15;letter-spacing:-.02em}
-header h1 em{font-style:italic;color:var(--hl)}
-.hm{margin-top:.8rem;display:flex;gap:1.4rem;flex-wrap:wrap}
-.mi{display:flex;align-items:center;gap:.4rem;font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:#908070}
-.md{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+            header {
+                background: var(--ink);
+                color: var(--bg);
+                padding: 2.5rem 2rem 2rem;
+                position: relative;
+            }
+            header::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 5px;
+                background: linear-gradient(
+                    90deg,
+                    var(--a1) 0%,
+                    var(--a2) 20%,
+                    var(--a3) 40%,
+                    var(--a4) 60%,
+                    var(--a5) 80%,
+                    var(--hl) 100%
+                );
+            }
+            .hi {
+                max-width: 920px;
+                margin: 0 auto;
+            }
+            .kl {
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: 0.65rem;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: #a08060;
+                margin-bottom: 0.6rem;
+            }
+            header h1 {
+                font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+                font-weight: 700;
+                line-height: 1.15;
+                letter-spacing: -0.02em;
+            }
+            header h1 em {
+                font-style: italic;
+                color: var(--hl);
+            }
+            .hm {
+                margin-top: 0.8rem;
+                display: flex;
+                gap: 1.4rem;
+                flex-wrap: wrap;
+            }
+            .mi {
+                display: flex;
+                align-items: center;
+                gap: 0.4rem;
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: 0.68rem;
+                color: #908070;
+            }
+            .md {
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                flex-shrink: 0;
+            }
 
-nav.ln{background:var(--paper);border-bottom:2px solid var(--rule);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.07)}
-.lni{max-width:920px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none}
-.lni::-webkit-scrollbar{display:none}
-.nb{padding:.8rem 1rem;background:none;border:none;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:.63rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);border-bottom:3px solid transparent;white-space:nowrap;transition:all .2s;display:flex;align-items:center;gap:.4rem}
-.nb:hover{color:var(--ink);background:var(--bg)}
-.nb.active{color:var(--ink);border-bottom-color:currentColor}
-.nd{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+            nav.ln {
+                background: var(--paper);
+                border-bottom: 2px solid var(--rule);
+                position: sticky;
+                top: 0;
+                z-index: 100;
+                box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+            }
+            .lni {
+                max-width: 920px;
+                margin: 0 auto;
+                display: flex;
+                overflow-x: auto;
+                scrollbar-width: none;
+            }
+            .lni::-webkit-scrollbar {
+                display: none;
+            }
+            .nb {
+                padding: 0.8rem 1rem;
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: 0.63rem;
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                color: var(--ink3);
+                border-bottom: 3px solid transparent;
+                white-space: nowrap;
+                transition: all 0.2s;
+                display: flex;
+                align-items: center;
+                gap: 0.4rem;
+            }
+            .nb:hover {
+                color: var(--ink);
+                background: var(--bg);
+            }
+            .nb.active {
+                color: var(--ink);
+                border-bottom-color: currentColor;
+            }
+            .nd {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                flex-shrink: 0;
+            }
 
-main{max-width:920px;margin:0 auto;padding:1.8rem 1.4rem 5rem}
-.sec{display:none;animation:fi .25s ease}
-.sec.active{display:block}
-@keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+            main {
+                max-width: 920px;
+                margin: 0 auto;
+                padding: 1.8rem 1.4rem 5rem;
+            }
+            .sec {
+                display: none;
+                animation: fi 0.25s ease;
+            }
+            .sec.active {
+                display: block;
+            }
+            @keyframes fi {
+                from {
+                    opacity: 0;
+                    transform: translateY(6px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
 
-.sh{margin-bottom:2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--rule)}
-.sl{font-family:'IBM Plex Mono',monospace;font-size:.63rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem;display:flex;align-items:center;gap:.5rem}
-.lb{display:inline-flex;align-items:center;padding:.18rem .55rem;border-radius:2px;font-size:.58rem;font-weight:600;letter-spacing:.1em}
-.st{font-size:clamp(1.2rem,2.8vw,1.75rem);font-weight:700;line-height:1.2;margin-bottom:.55rem}
-.sd{color:var(--ink3);font-size:.88rem;line-height:1.65;font-style:italic}
+            .sh {
+                margin-bottom: 2rem;
+                padding-bottom: 1.2rem;
+                border-bottom: 1px solid var(--rule);
+            }
+            .sl {
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: 0.63rem;
+                font-weight: 600;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                margin-bottom: 0.4rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            .lb {
+                display: inline-flex;
+                align-items: center;
+                padding: 0.18rem 0.55rem;
+                border-radius: 2px;
+                font-size: 0.58rem;
+                font-weight: 600;
+                letter-spacing: 0.1em;
+            }
+            .st {
+                font-size: clamp(1.2rem, 2.8vw, 1.75rem);
+                font-weight: 700;
+                line-height: 1.2;
+                margin-bottom: 0.55rem;
+            }
+            .sd {
+                color: var(--ink3);
+                font-size: 0.88rem;
+                line-height: 1.65;
+                font-style: italic;
+            }
 
-.tc{background:var(--paper);border:1px solid var(--rule);border-left:4px solid;margin-bottom:1.5rem;border-radius:0 4px 4px 0;overflow:hidden;transition:box-shadow .2s}
-.tc:hover{box-shadow:0 3px 18px rgba(0,0,0,.07)}
-.th{padding:.95rem 1.3rem;display:flex;align-items:flex-start;gap:.8rem;cursor:pointer;user-select:none}
-.tn{font-family:'IBM Plex Mono',monospace;font-size:.62rem;font-weight:600;color:#fff;padding:.18rem .42rem;border-radius:2px;flex-shrink:0;margin-top:2px}
-.tw{flex:1}
-.tt{font-size:.97rem;font-weight:700;line-height:1.3;margin-bottom:.22rem}
-.tg{display:flex;flex-wrap:wrap;gap:.28rem}
-.tag{font-family:'IBM Plex Mono',monospace;font-size:.55rem;font-weight:500;padding:.1rem .36rem;border-radius:2px;background:var(--bg);color:var(--ink3);border:1px solid var(--rule)}
-.tto{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--ink3);flex-shrink:0;padding-top:2px;transition:transform .2s}
-.tb{display:none;border-top:1px solid var(--rule)}
-.tb.open{display:block}
-.tto.open{transform:rotate(180deg)}
+            .tc {
+                background: var(--paper);
+                border: 1px solid var(--rule);
+                border-left: 4px solid;
+                margin-bottom: 1.5rem;
+                border-radius: 0 4px 4px 0;
+                overflow: hidden;
+                transition: box-shadow 0.2s;
+            }
+            .tc:hover {
+                box-shadow: 0 3px 18px rgba(0, 0, 0, 0.07);
+            }
+            .th {
+                padding: 0.95rem 1.3rem;
+                display: flex;
+                align-items: flex-start;
+                gap: 0.8rem;
+                cursor: pointer;
+                user-select: none;
+            }
+            .tn {
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: 0.62rem;
+                font-weight: 600;
+                color: #fff;
+                padding: 0.18rem 0.42rem;
+                border-radius: 2px;
+                flex-shrink: 0;
+                margin-top: 2px;
+            }
+            .tw {
+                flex: 1;
+            }
+            .tt {
+                font-size: 0.97rem;
+                font-weight: 700;
+                line-height: 1.3;
+                margin-bottom: 0.22rem;
+            }
+            .tg {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.28rem;
+            }
+            .tag {
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: 0.55rem;
+                font-weight: 500;
+                padding: 0.1rem 0.36rem;
+                border-radius: 2px;
+                background: var(--bg);
+                color: var(--ink3);
+                border: 1px solid var(--rule);
+            }
+            .tto {
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: 0.72rem;
+                color: var(--ink3);
+                flex-shrink: 0;
+                padding-top: 2px;
+                transition: transform 0.2s;
+            }
+            .tb {
+                display: none;
+                border-top: 1px solid var(--rule);
+            }
+            .tb.open {
+                display: block;
+            }
+            .tto.open {
+                transform: rotate(180deg);
+            }
 
-.tx{padding:1.2rem 1.3rem;border-bottom:1px solid var(--rule)}
-.tx p{line-height:1.68;margin-bottom:.65rem;color:var(--ink2);font-size:.91rem}
-.tx p:last-child{margin-bottom:0}
-.tx strong{color:var(--ink)}
-.tx ol{padding-left:1.3rem;margin:.35rem 0;color:var(--ink2);line-height:1.85;font-size:.89rem}
-.tx li{margin-bottom:.1rem}
-.ib{background:var(--bg);border:1px solid var(--rule);border-radius:3px;padding:.8rem .95rem;margin:.75rem 0;font-family:'IBM Plex Mono',monospace;font-size:.76rem;color:var(--ink2);line-height:1.65}
-.ib .lbl{font-size:.58rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.3rem;display:block}
-.note{background:#fffcf0;border:1px solid #dcc870;border-left:3px solid var(--hl);padding:.65rem .85rem;border-radius:0 3px 3px 0;margin:.65rem 0;font-size:.82rem;color:#4a3c00;line-height:1.6}
-.note strong{color:#2a2000}
+            .tx {
+                padding: 1.2rem 1.3rem;
+                border-bottom: 1px solid var(--rule);
+            }
+            .tx p {
+                line-height: 1.68;
+                margin-bottom: 0.65rem;
+                color: var(--ink2);
+                font-size: 0.91rem;
+            }
+            .tx p:last-child {
+                margin-bottom: 0;
+            }
+            .tx strong {
+                color: var(--ink);
+            }
+            .tx ol {
+                padding-left: 1.3rem;
+                margin: 0.35rem 0;
+                color: var(--ink2);
+                line-height: 1.85;
+                font-size: 0.89rem;
+            }
+            .tx li {
+                margin-bottom: 0.1rem;
+            }
+            .ib {
+                background: var(--bg);
+                border: 1px solid var(--rule);
+                border-radius: 3px;
+                padding: 0.8rem 0.95rem;
+                margin: 0.75rem 0;
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: 0.76rem;
+                color: var(--ink2);
+                line-height: 1.65;
+            }
+            .ib .lbl {
+                font-size: 0.58rem;
+                font-weight: 600;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--ink3);
+                margin-bottom: 0.3rem;
+                display: block;
+            }
+            .note {
+                background: #fffcf0;
+                border: 1px solid #dcc870;
+                border-left: 3px solid var(--hl);
+                padding: 0.65rem 0.85rem;
+                border-radius: 0 3px 3px 0;
+                margin: 0.65rem 0;
+                font-size: 0.82rem;
+                color: #4a3c00;
+                line-height: 1.6;
+            }
+            .note strong {
+                color: #2a2000;
+            }
 
-.cb{background:var(--cbg);padding:1.2rem 1.3rem;overflow-x:auto;position:relative}
-.cb .cl{position:absolute;top:.45rem;right:.65rem;font-family:'IBM Plex Mono',monospace;font-size:.55rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#604030}
-.cb pre{font-family:'IBM Plex Mono',monospace;font-size:.78rem;line-height:1.78;color:var(--cfg);white-space:pre}
-.k{color:var(--cp);font-style:italic}.s{color:var(--cg)}.n{color:var(--cb)}
-.c{color:#5a4830;font-style:italic}.f{color:var(--cy)}.o{color:#b87840}
+            .cb {
+                background: var(--cbg);
+                padding: 1.2rem 1.3rem;
+                overflow-x: auto;
+                position: relative;
+            }
+            .cb .cl {
+                position: absolute;
+                top: 0.45rem;
+                right: 0.65rem;
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: 0.55rem;
+                font-weight: 600;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: #604030;
+            }
+            .cb pre {
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: 0.78rem;
+                line-height: 1.78;
+                color: var(--cfg);
+                white-space: pre;
+            }
+            .k {
+                color: var(--cp);
+                font-style: italic;
+            }
+            .s {
+                color: var(--cg);
+            }
+            .n {
+                color: var(--cb);
+            }
+            .c {
+                color: #5a4830;
+                font-style: italic;
+            }
+            .f {
+                color: var(--cy);
+            }
+            .o {
+                color: #b87840;
+            }
 
-.st2{padding:.65rem 1.3rem;display:flex;align-items:center;gap:.45rem;cursor:pointer;background:none;border:none;width:100%;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:.65rem;font-weight:600;letter-spacing:.06em;color:var(--ink3);border-top:1px solid var(--rule);transition:background .15s}
-.st2:hover{background:var(--bg)}
-.sb{display:none}
-.sb.open{display:block}
+            .st2 {
+                padding: 0.65rem 1.3rem;
+                display: flex;
+                align-items: center;
+                gap: 0.45rem;
+                cursor: pointer;
+                background: none;
+                border: none;
+                width: 100%;
+                text-align: left;
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: 0.65rem;
+                font-weight: 600;
+                letter-spacing: 0.06em;
+                color: var(--ink3);
+                border-top: 1px solid var(--rule);
+                transition: background 0.15s;
+            }
+            .st2:hover {
+                background: var(--bg);
+            }
+            .sb {
+                display: none;
+            }
+            .sb.open {
+                display: block;
+            }
 
-.pr{padding:.48rem 1.3rem;display:flex;align-items:center;justify-content:space-between;background:var(--bg);border-top:1px solid var(--rule)}
-.pl{font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--ink3)}
-.pv{font-family:'IBM Plex Mono',monospace;font-size:.65rem;font-weight:600;color:#fff;padding:.15rem .48rem;border-radius:2px}
+            .pr {
+                padding: 0.48rem 1.3rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background: var(--bg);
+                border-top: 1px solid var(--rule);
+            }
+            .pl {
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: 0.62rem;
+                color: var(--ink3);
+            }
+            .pv {
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: 0.65rem;
+                font-weight: 600;
+                color: #fff;
+                padding: 0.15rem 0.48rem;
+                border-radius: 2px;
+            }
 
-.l1{--lc:var(--a1);border-left-color:var(--a1)}
-.l2{--lc:var(--a2);border-left-color:var(--a2)}
-.l3{--lc:var(--a3);border-left-color:var(--a3)}
-.l4{--lc:var(--a4);border-left-color:var(--a4)}
-.l5{--lc:var(--a5);border-left-color:var(--a5)}
-.l6{--lc:var(--hl);border-left-color:var(--hl)}
-.tc .tn,.tc .pv{background:var(--lc)}
-code{font-family:'IBM Plex Mono',monospace;font-size:.82em;background:var(--bg);padding:.07em .26em;border-radius:2px;border:1px solid var(--rule)}
-</style>
-</head>
-<body>
+            .l1 {
+                --lc: var(--a1);
+                border-left-color: var(--a1);
+            }
+            .l2 {
+                --lc: var(--a2);
+                border-left-color: var(--a2);
+            }
+            .l3 {
+                --lc: var(--a3);
+                border-left-color: var(--a3);
+            }
+            .l4 {
+                --lc: var(--a4);
+                border-left-color: var(--a4);
+            }
+            .l5 {
+                --lc: var(--a5);
+                border-left-color: var(--a5);
+            }
+            .l6 {
+                --lc: var(--hl);
+                border-left-color: var(--hl);
+            }
+            .tc .tn,
+            .tc .pv {
+                background: var(--lc);
+            }
+            code {
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: 0.82em;
+                background: var(--bg);
+                padding: 0.07em 0.26em;
+                border-radius: 2px;
+                border: 1px solid var(--rule);
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="hi">
+                <div class="kl">Digitális Kultúra · Középszint</div>
+                <h1>Programozási<br /><em>Feladatsor</em></h1>
+                <div class="hm">
+                    <div class="mi">
+                        <div class="md" style="background: #7ec8a0"></div>
+                        6 szint
+                    </div>
+                    <div class="mi">
+                        <div class="md" style="background: #7ab8d9"></div>
+                        18 feladat
+                    </div>
+                </div>
+            </div>
+        </header>
 
-<header>
-  <div class="hi">
-    <div class="kl">Digitális Kultúra · Középszint · 2024</div>
-    <h1>Programozási<br><em>Feladatsor</em></h1>
-    <div class="hm">
-      <div class="mi"><div class="md" style="background:#7ec8a0"></div>6 szint</div>
-      <div class="mi"><div class="md" style="background:#7ab8d9"></div>18 feladat</div>
-      <div class="mi"><div class="md" style="background:#e8c06a"></div>csak for ciklus · típusalgoritmusok · eljárások</div>
-    </div>
-  </div>
-</header>
+        <nav class="ln">
+            <div class="lni">
+                <button class="nb active" onclick="show('s1')" data-s="s1">
+                    <div class="nd" style="background: var(--a1)"></div>
+                    1. Szekvencia
+                </button>
+                <button class="nb" onclick="show('s2')" data-s="s2">
+                    <div class="nd" style="background: var(--a2)"></div>
+                    2. Elágazás
+                </button>
+                <button class="nb" onclick="show('s3')" data-s="s3">
+                    <div class="nd" style="background: var(--a3)"></div>
+                    3. For ciklus
+                </button>
+                <button class="nb" onclick="show('s4')" data-s="s4">
+                    <div class="nd" style="background: var(--a4)"></div>
+                    4. Egy algoritmus
+                </button>
+                <button class="nb" onclick="show('s5')" data-s="s5">
+                    <div class="nd" style="background: var(--a5)"></div>
+                    5. Több algoritmus
+                </button>
+                <button class="nb" onclick="show('s6')" data-s="s6">
+                    <div class="nd" style="background: var(--hl)"></div>
+                    6. Eljárások
+                </button>
+            </div>
+        </nav>
 
-<nav class="ln">
-  <div class="lni">
-    <button class="nb active" onclick="show('s1')" data-s="s1"><div class="nd" style="background:var(--a1)"></div>1. Szekvencia</button>
-    <button class="nb" onclick="show('s2')" data-s="s2"><div class="nd" style="background:var(--a2)"></div>2. Elágazás</button>
-    <button class="nb" onclick="show('s3')" data-s="s3"><div class="nd" style="background:var(--a3)"></div>3. For ciklus</button>
-    <button class="nb" onclick="show('s4')" data-s="s4"><div class="nd" style="background:var(--a4)"></div>4. Egy algoritmus</button>
-    <button class="nb" onclick="show('s5')" data-s="s5"><div class="nd" style="background:var(--a5)"></div>5. Több algoritmus</button>
-    <button class="nb" onclick="show('s6')" data-s="s6"><div class="nd" style="background:var(--hl)"></div>6. Eljárások</button>
-  </div>
-</nav>
+        <main>
+            <!-- ===== 1. SZEKVENCIA ===== -->
+            <section class="sec active" id="s1">
+                <div class="sh">
+                    <div class="sl">
+                        <span class="lb" style="background: #e6f4ec; color: #1a5c38; border: 1px solid #a8d8bc">● 1. szint</span>
+                    </div>
+                    <h2 class="st">Szekvencia — egyenes út</h2>
+                    <p class="sd">
+                        Változók, beolvasás, egyszerű számítás, kiírás. Nincs elágazás, nincs ciklus — a program minden sora egyszer, sorban
+                        fut le.
+                    </p>
+                </div>
 
-<main>
+                <div class="tc l1">
+                    <div class="th" onclick="tog(this)">
+                        <span class="tn">F1</span>
+                        <div class="tw">
+                            <div class="tt">Köszöntő</div>
+                            <div class="tg">
+                                <span class="tag">beolvasás</span><span class="tag">kiírás</span><span class="tag">szöveg</span>
+                            </div>
+                        </div>
+                        <span class="tto">▼</span>
+                    </div>
+                    <div class="tb">
+                        <div class="tx">
+                            <p>Kérj be egy nevet, majd köszöntsd a felhasználót: <code>Szia, [Név]! Üdvözöllek a programban.</code></p>
+                            <div class="ib">
+                                <span class="lbl">Minta</span>Adj meg egy nevet: Anna<br />Szia, Anna! Üdvözöllek a programban.
+                            </div>
+                            <div class="note"><strong>Fogalmak:</strong> input(), print(), f-string vagy + összefűzés.</div>
+                        </div>
+                        <button class="st2" onclick="togS(this)">▶ Megoldás</button>
+                        <div class="sb">
+                            <div class="cb">
+                                <span class="cl">Python</span>
+                                <pre>nev <span class="o">=</span> <span class="f">input</span>(<span class="s">"Adj meg egy nevet: "</span>)
+<span class="f">print</span>(<span class="s">f"Szia, {nev}! Üdvözöllek a programban."</span>)</pre>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <span class="pl">Nehézség <span style="color: var(--lc)">●○○○○○</span></span
+                            ><span class="pv">3 pt</span>
+                        </div>
+                    </div>
+                </div>
 
-<!-- ===== 1. SZEKVENCIA ===== -->
-<section class="sec active" id="s1">
-  <div class="sh">
-    <div class="sl"><span class="lb" style="background:#e6f4ec;color:#1a5c38;border:1px solid #a8d8bc">● 1. szint</span></div>
-    <h2 class="st">Szekvencia — egyenes út</h2>
-    <p class="sd">Változók, beolvasás, egyszerű számítás, kiírás. Nincs elágazás, nincs ciklus — a program minden sora egyszer, sorban fut le.</p>
-  </div>
-
-  <div class="tc l1">
-    <div class="th" onclick="tog(this)">
-      <span class="tn">F1</span>
-      <div class="tw">
-        <div class="tt">Köszöntő</div>
-        <div class="tg"><span class="tag">beolvasás</span><span class="tag">kiírás</span><span class="tag">szöveg</span></div>
-      </div><span class="tto">▼</span>
-    </div>
-    <div class="tb">
-      <div class="tx">
-        <p>Kérj be egy nevet, majd köszöntsd a felhasználót: <code>Szia, [Név]! Üdvözöllek a programban.</code></p>
-        <div class="ib"><span class="lbl">Minta</span>Adj meg egy nevet: Anna<br>Szia, Anna! Üdvözöllek a programban.</div>
-        <div class="note"><strong>Fogalmak:</strong> input(), print(), f-string vagy + összefűzés.</div>
-      </div>
-      <button class="st2" onclick="togS(this)">▶ Megoldás</button>
-      <div class="sb"><div class="cb"><span class="cl">Python</span><pre>nev <span class="o">=</span> <span class="f">input</span>(<span class="s">"Adj meg egy nevet: "</span>)
-<span class="f">print</span>(<span class="s">f"Szia, {nev}! Üdvözöllek a programban."</span>)</pre></div></div>
-      <div class="pr"><span class="pl">Nehézség <span style="color:var(--lc)">●○○○○○</span></span><span class="pv">3 pt</span></div>
-    </div>
-  </div>
-
-  <div class="tc l1">
-    <div class="th" onclick="tog(this)">
-      <span class="tn">F2</span>
-      <div class="tw">
-        <div class="tt">Téglalap kerülete és területe</div>
-        <div class="tg"><span class="tag">int / float</span><span class="tag">számítás</span><span class="tag">:.2f</span></div>
-      </div><span class="tto">▼</span>
-    </div>
-    <div class="tb">
-      <div class="tx">
-        <p>Kérj be egy téglalap két oldalát (egész számok), és írd ki a területét meg a kerületét!</p>
-        <div class="ib"><span class="lbl">Minta</span>a = 5 &nbsp;|&nbsp; b = 3<br>Terület: 15<br>Kerület: 16</div>
-        <div class="note"><strong>Fogalmak:</strong> int() konverzió, szorzás és összeadás, több print().</div>
-      </div>
-      <button class="st2" onclick="togS(this)">▶ Megoldás</button>
-      <div class="sb"><div class="cb"><span class="cl">Python</span><pre>a <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"a = "</span>))
+                <div class="tc l1">
+                    <div class="th" onclick="tog(this)">
+                        <span class="tn">F2</span>
+                        <div class="tw">
+                            <div class="tt">Téglalap kerülete és területe</div>
+                            <div class="tg">
+                                <span class="tag">int / float</span><span class="tag">számítás</span><span class="tag">:.2f</span>
+                            </div>
+                        </div>
+                        <span class="tto">▼</span>
+                    </div>
+                    <div class="tb">
+                        <div class="tx">
+                            <p>Kérj be egy téglalap két oldalát (egész számok), és írd ki a területét meg a kerületét!</p>
+                            <div class="ib"><span class="lbl">Minta</span>a = 5 &nbsp;|&nbsp; b = 3<br />Terület: 15<br />Kerület: 16</div>
+                            <div class="note"><strong>Fogalmak:</strong> int() konverzió, szorzás és összeadás, több print().</div>
+                        </div>
+                        <button class="st2" onclick="togS(this)">▶ Megoldás</button>
+                        <div class="sb">
+                            <div class="cb">
+                                <span class="cl">Python</span>
+                                <pre>a <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"a = "</span>))
 b <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"b = "</span>))
 <span class="f">print</span>(<span class="s">"Terület:"</span>, a <span class="o">*</span> b)
-<span class="f">print</span>(<span class="s">"Kerület:"</span>, <span class="n">2</span> <span class="o">*</span> (a <span class="o">+</span> b))</pre></div></div>
-      <div class="pr"><span class="pl">Nehézség <span style="color:var(--lc)">●●○○○○</span></span><span class="pv">4 pt</span></div>
-    </div>
-  </div>
+<span class="f">print</span>(<span class="s">"Kerület:"</span>, <span class="n">2</span> <span class="o">*</span> (a <span class="o">+</span> b))</pre>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <span class="pl">Nehézség <span style="color: var(--lc)">●●○○○○</span></span
+                            ><span class="pv">4 pt</span>
+                        </div>
+                    </div>
+                </div>
 
-  <div class="tc l1">
-    <div class="th" onclick="tog(this)">
-      <span class="tn">F3</span>
-      <div class="tw">
-        <div class="tt">Hőmérséklet átváltása</div>
-        <div class="tg"><span class="tag">float</span><span class="tag">képlet</span><span class="tag">:.1f</span></div>
-      </div><span class="tto">▼</span>
-    </div>
-    <div class="tb">
-      <div class="tx">
-        <p>Kérj be egy Celsius-hőmérsékletet, és számítsd ki a Fahrenheit értékét!<br>
-        Képlet: <strong>F = C × 1.8 + 32</strong></p>
-        <div class="ib"><span class="lbl">Minta</span>Celsius: 20<br>Fahrenheit: 68.0</div>
-        <div class="note"><strong>Fogalmak:</strong> float() konverzió, szorzás és összeadás, 1 tizedesjegy kimenet.</div>
-      </div>
-      <button class="st2" onclick="togS(this)">▶ Megoldás</button>
-      <div class="sb"><div class="cb"><span class="cl">Python</span><pre>c <span class="o">=</span> <span class="f">float</span>(<span class="f">input</span>(<span class="s">"Celsius: "</span>))
-<span class="f">print</span>(<span class="s">f"Fahrenheit: {c * 1.8 + 32<span class="o">:.1f</span>}"</span>)</pre></div></div>
-      <div class="pr"><span class="pl">Nehézség <span style="color:var(--lc)">●●○○○○</span></span><span class="pv">4 pt</span></div>
-    </div>
-  </div>
-</section>
+                <div class="tc l1">
+                    <div class="th" onclick="tog(this)">
+                        <span class="tn">F3</span>
+                        <div class="tw">
+                            <div class="tt">Hőmérséklet átváltása</div>
+                            <div class="tg"><span class="tag">float</span><span class="tag">képlet</span><span class="tag">:.1f</span></div>
+                        </div>
+                        <span class="tto">▼</span>
+                    </div>
+                    <div class="tb">
+                        <div class="tx">
+                            <p>
+                                Kérj be egy Celsius-hőmérsékletet, és számítsd ki a Fahrenheit értékét!<br />
+                                Képlet: <strong>F = C × 1.8 + 32</strong>
+                            </p>
+                            <div class="ib"><span class="lbl">Minta</span>Celsius: 20<br />Fahrenheit: 68.0</div>
+                            <div class="note">
+                                <strong>Fogalmak:</strong> float() konverzió, szorzás és összeadás, 1 tizedesjegy kimenet.
+                            </div>
+                        </div>
+                        <button class="st2" onclick="togS(this)">▶ Megoldás</button>
+                        <div class="sb">
+                            <div class="cb">
+                                <span class="cl">Python</span>
+                                <pre>c <span class="o">=</span> <span class="f">float</span>(<span class="f">input</span>(<span class="s">"Celsius: "</span>))
+<span class="f">print</span>(<span class="s">f"Fahrenheit: {c * 1.8 + 32<span class="o">:.1f</span>}"</span>)</pre>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <span class="pl">Nehézség <span style="color: var(--lc)">●●○○○○</span></span
+                            ><span class="pv">4 pt</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-<!-- ===== 2. ELÁGAZÁS ===== -->
-<section class="sec" id="s2">
-  <div class="sh">
-    <div class="sl"><span class="lb" style="background:#e6eff8;color:#1a4a7a;border:1px solid #a0c0e0">● 2. szint</span></div>
-    <h2 class="st">Elágazás — döntés</h2>
-    <p class="sd">if, elif, else. A program más-más utasítást hajt végre attól függően, hogy egy feltétel igaz-e vagy sem.</p>
-  </div>
+            <!-- ===== 2. ELÁGAZÁS ===== -->
+            <section class="sec" id="s2">
+                <div class="sh">
+                    <div class="sl">
+                        <span class="lb" style="background: #e6eff8; color: #1a4a7a; border: 1px solid #a0c0e0">● 2. szint</span>
+                    </div>
+                    <h2 class="st">Elágazás — döntés</h2>
+                    <p class="sd">
+                        if, elif, else. A program más-más utasítást hajt végre attól függően, hogy egy feltétel igaz-e vagy sem.
+                    </p>
+                </div>
 
-  <div class="tc l2">
-    <div class="th" onclick="tog(this)">
-      <span class="tn">F4</span>
-      <div class="tw">
-        <div class="tt">Pozitív, negatív vagy nulla?</div>
-        <div class="tg"><span class="tag">if / elif / else</span><span class="tag">egész szám</span></div>
-      </div><span class="tto">▼</span>
-    </div>
-    <div class="tb">
-      <div class="tx">
-        <p>Kérj be egy egész számot, és írd ki, hogy <strong>pozitív</strong>, <strong>negatív</strong> vagy <strong>nulla</strong>!</p>
-        <div class="ib"><span class="lbl">Minta</span>Szám: -4 → negatív<br>Szám: 0 → nulla<br>Szám: 7 → pozitív</div>
-        <div class="note"><strong>Fogalmak:</strong> if–elif–else, összehasonlító operátorok (&lt;, &gt;, ==).</div>
-      </div>
-      <button class="st2" onclick="togS(this)">▶ Megoldás</button>
-      <div class="sb"><div class="cb"><span class="cl">Python</span><pre>x <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Szám: "</span>))
+                <div class="tc l2">
+                    <div class="th" onclick="tog(this)">
+                        <span class="tn">F4</span>
+                        <div class="tw">
+                            <div class="tt">Pozitív, negatív vagy nulla?</div>
+                            <div class="tg"><span class="tag">if / elif / else</span><span class="tag">egész szám</span></div>
+                        </div>
+                        <span class="tto">▼</span>
+                    </div>
+                    <div class="tb">
+                        <div class="tx">
+                            <p>
+                                Kérj be egy egész számot, és írd ki, hogy <strong>pozitív</strong>, <strong>negatív</strong> vagy
+                                <strong>nulla</strong>!
+                            </p>
+                            <div class="ib">
+                                <span class="lbl">Minta</span>Szám: -4 → negatív<br />Szám: 0 → nulla<br />Szám: 7 → pozitív
+                            </div>
+                            <div class="note"><strong>Fogalmak:</strong> if–elif–else, összehasonlító operátorok (&lt;, &gt;, ==).</div>
+                        </div>
+                        <button class="st2" onclick="togS(this)">▶ Megoldás</button>
+                        <div class="sb">
+                            <div class="cb">
+                                <span class="cl">Python</span>
+                                <pre>x <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Szám: "</span>))
 <span class="k">if</span> x <span class="o">&gt;</span> <span class="n">0</span>:
     <span class="f">print</span>(<span class="s">"pozitív"</span>)
 <span class="k">elif</span> x <span class="o">&lt;</span> <span class="n">0</span>:
     <span class="f">print</span>(<span class="s">"negatív"</span>)
 <span class="k">else</span>:
-    <span class="f">print</span>(<span class="s">"nulla"</span>)</pre></div></div>
-      <div class="pr"><span class="pl">Nehézség <span style="color:var(--lc)">●●○○○○</span></span><span class="pv">5 pt</span></div>
-    </div>
-  </div>
+    <span class="f">print</span>(<span class="s">"nulla"</span>)</pre>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <span class="pl">Nehézség <span style="color: var(--lc)">●●○○○○</span></span
+                            ><span class="pv">5 pt</span>
+                        </div>
+                    </div>
+                </div>
 
-  <div class="tc l2">
-    <div class="th" onclick="tog(this)">
-      <span class="tn">F5</span>
-      <div class="tw">
-        <div class="tt">Jegy meghatározása</div>
-        <div class="tg"><span class="tag">elif lánc</span><span class="tag">határértékek</span><span class="tag">hibakezelés</span></div>
-      </div><span class="tto">▼</span>
-    </div>
-    <div class="tb">
-      <div class="tx">
-        <p>Kérj be egy 0–100 közötti pontszámot, és írd ki az iskolai jegyet!</p>
-        <div class="ib"><span class="lbl">Ponthatárok</span>0–39 → Elégtelen (1)<br>40–54 → Elégséges (2)<br>55–69 → Közepes (3)<br>70–84 → Jó (4)<br>85–100 → Jeles (5)<br>Egyéb → Érvénytelen adat!</div>
-        <div class="note"><strong>Fogalmak:</strong> if–elif–else lánc, or operátor az érvénytelen esethez.</div>
-      </div>
-      <button class="st2" onclick="togS(this)">▶ Megoldás</button>
-      <div class="sb"><div class="cb"><span class="cl">Python</span><pre>p <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Pontszám: "</span>))
+                <div class="tc l2">
+                    <div class="th" onclick="tog(this)">
+                        <span class="tn">F5</span>
+                        <div class="tw">
+                            <div class="tt">Jegy meghatározása</div>
+                            <div class="tg">
+                                <span class="tag">elif lánc</span><span class="tag">határértékek</span><span class="tag">hibakezelés</span>
+                            </div>
+                        </div>
+                        <span class="tto">▼</span>
+                    </div>
+                    <div class="tb">
+                        <div class="tx">
+                            <p>Kérj be egy 0–100 közötti pontszámot, és írd ki az iskolai jegyet!</p>
+                            <div class="ib">
+                                <span class="lbl">Ponthatárok</span>0–39 → Elégtelen (1)<br />40–54 → Elégséges (2)<br />55–69 → Közepes
+                                (3)<br />70–84 → Jó (4)<br />85–100 → Jeles (5)<br />Egyéb → Érvénytelen adat!
+                            </div>
+                            <div class="note"><strong>Fogalmak:</strong> if–elif–else lánc, or operátor az érvénytelen esethez.</div>
+                        </div>
+                        <button class="st2" onclick="togS(this)">▶ Megoldás</button>
+                        <div class="sb">
+                            <div class="cb">
+                                <span class="cl">Python</span>
+                                <pre>p <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Pontszám: "</span>))
 <span class="k">if</span> p <span class="o">&lt;</span> <span class="n">0</span> <span class="k">or</span> p <span class="o">&gt;</span> <span class="n">100</span>:
     <span class="f">print</span>(<span class="s">"Érvénytelen adat!"</span>)
 <span class="k">elif</span> p <span class="o">&lt;=</span> <span class="n">39</span>:
@@ -258,32 +744,45 @@ b <span class="o">=</span> <span class="f">int</span>(<span class="f">input</spa
 <span class="k">elif</span> p <span class="o">&lt;=</span> <span class="n">84</span>:
     <span class="f">print</span>(<span class="s">"Jó (4)"</span>)
 <span class="k">else</span>:
-    <span class="f">print</span>(<span class="s">"Jeles (5)"</span>)</pre></div></div>
-      <div class="pr"><span class="pl">Nehézség <span style="color:var(--lc)">●●●○○○</span></span><span class="pv">8 pt</span></div>
-    </div>
-  </div>
+    <span class="f">print</span>(<span class="s">"Jeles (5)"</span>)</pre>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <span class="pl">Nehézség <span style="color: var(--lc)">●●●○○○</span></span
+                            ><span class="pv">8 pt</span>
+                        </div>
+                    </div>
+                </div>
 
-  <div class="tc l2">
-    <div class="th" onclick="tog(this)">
-      <span class="tn">F6</span>
-      <div class="tw">
-        <div class="tt">Páros vagy páratlan + osztható-e?</div>
-        <div class="tg"><span class="tag">% operátor</span><span class="tag">and</span><span class="tag">egymásba ágyazás</span></div>
-      </div><span class="tto">▼</span>
-    </div>
-    <div class="tb">
-      <div class="tx">
-        <p>Kérj be egy pozitív egész számot! Döntsd el:</p>
-        <ol>
-          <li>Páros vagy páratlan?</li>
-          <li>Osztható-e 3-mal?</li>
-          <li>Osztható-e egyszerre 2-vel és 3-mal is?</li>
-        </ol>
-        <div class="ib"><span class="lbl">Minta (szám = 12)</span>Páros<br>Osztható 3-mal<br>Osztható 6-tal is (2×3)</div>
-        <div class="note"><strong>Fogalmak:</strong> % maradékos osztás, and logikai operátor.</div>
-      </div>
-      <button class="st2" onclick="togS(this)">▶ Megoldás</button>
-      <div class="sb"><div class="cb"><span class="cl">Python</span><pre>x <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Szám: "</span>))
+                <div class="tc l2">
+                    <div class="th" onclick="tog(this)">
+                        <span class="tn">F6</span>
+                        <div class="tw">
+                            <div class="tt">Páros vagy páratlan + osztható-e?</div>
+                            <div class="tg">
+                                <span class="tag">% operátor</span><span class="tag">and</span><span class="tag">egymásba ágyazás</span>
+                            </div>
+                        </div>
+                        <span class="tto">▼</span>
+                    </div>
+                    <div class="tb">
+                        <div class="tx">
+                            <p>Kérj be egy pozitív egész számot! Döntsd el:</p>
+                            <ol>
+                                <li>Páros vagy páratlan?</li>
+                                <li>Osztható-e 3-mal?</li>
+                                <li>Osztható-e egyszerre 2-vel és 3-mal is?</li>
+                            </ol>
+                            <div class="ib">
+                                <span class="lbl">Minta (szám = 12)</span>Páros<br />Osztható 3-mal<br />Osztható 6-tal is (2×3)
+                            </div>
+                            <div class="note"><strong>Fogalmak:</strong> % maradékos osztás, and logikai operátor.</div>
+                        </div>
+                        <button class="st2" onclick="togS(this)">▶ Megoldás</button>
+                        <div class="sb">
+                            <div class="cb">
+                                <span class="cl">Python</span>
+                                <pre>x <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Szám: "</span>))
 <span class="k">if</span> x <span class="o">%</span> <span class="n">2</span> <span class="o">==</span> <span class="n">0</span>:
     <span class="f">print</span>(<span class="s">"Páros"</span>)
 <span class="k">else</span>:
@@ -293,84 +792,139 @@ b <span class="o">=</span> <span class="f">int</span>(<span class="f">input</spa
     <span class="f">print</span>(<span class="s">"Osztható 3-mal"</span>)
 
 <span class="k">if</span> x <span class="o">%</span> <span class="n">2</span> <span class="o">==</span> <span class="n">0</span> <span class="k">and</span> x <span class="o">%</span> <span class="n">3</span> <span class="o">==</span> <span class="n">0</span>:
-    <span class="f">print</span>(<span class="s">"Osztható 6-tal is (2×3)"</span>)</pre></div></div>
-      <div class="pr"><span class="pl">Nehézség <span style="color:var(--lc)">●●●○○○</span></span><span class="pv">7 pt</span></div>
-    </div>
-  </div>
-</section>
+    <span class="f">print</span>(<span class="s">"Osztható 6-tal is (2×3)"</span>)</pre>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <span class="pl">Nehézség <span style="color: var(--lc)">●●●○○○</span></span
+                            ><span class="pv">7 pt</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-<!-- ===== 3. FOR CIKLUS ===== -->
-<section class="sec" id="s3">
-  <div class="sh">
-    <div class="sl"><span class="lb" style="background:#fdf3e6;color:#7a4200;border:1px solid #e0b870">● 3. szint</span></div>
-    <h2 class="st">For ciklus — ismétlés</h2>
-    <p class="sd">for … in range(). Adatok beolvasása ciklussal listába, műveletek minden elemre. Ciklusba ágyazott elágazás.</p>
-  </div>
+            <!-- ===== 3. FOR CIKLUS ===== -->
+            <section class="sec" id="s3">
+                <div class="sh">
+                    <div class="sl">
+                        <span class="lb" style="background: #fdf3e6; color: #7a4200; border: 1px solid #e0b870">● 3. szint</span>
+                    </div>
+                    <h2 class="st">For ciklus — ismétlés</h2>
+                    <p class="sd">
+                        for … in range(). Adatok beolvasása ciklussal listába, műveletek minden elemre. Ciklusba ágyazott elágazás.
+                    </p>
+                </div>
 
-  <div class="tc l3">
-    <div class="th" onclick="tog(this)">
-      <span class="tn">F7</span>
-      <div class="tw">
-        <div class="tt">Szorzótábla kiírása</div>
-        <div class="tg"><span class="tag">for ciklus</span><span class="tag">range()</span><span class="tag">kiírás</span></div>
-      </div><span class="tto">▼</span>
-    </div>
-    <div class="tb">
-      <div class="tx">
-        <p>Kérj be egy egész számot (1–10), és írd ki a szorzótábláját 1-től 10-ig!</p>
-        <div class="ib"><span class="lbl">Minta (szám = 3)</span>3 × 1 = 3<br>3 × 2 = 6<br>...<br>3 × 10 = 30</div>
-        <div class="note"><strong>Fogalmak:</strong> for i in range(1, 11), szorzás, f-string a formázott kimenethez.</div>
-      </div>
-      <button class="st2" onclick="togS(this)">▶ Megoldás</button>
-      <div class="sb"><div class="cb"><span class="cl">Python</span><pre>n <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Szám: "</span>))
+                <div class="tc l3">
+                    <div class="th" onclick="tog(this)">
+                        <span class="tn">F7</span>
+                        <div class="tw">
+                            <div class="tt">Szorzótábla kiírása</div>
+                            <div class="tg">
+                                <span class="tag">for ciklus</span><span class="tag">range()</span><span class="tag">kiírás</span>
+                            </div>
+                        </div>
+                        <span class="tto">▼</span>
+                    </div>
+                    <div class="tb">
+                        <div class="tx">
+                            <p>Kérj be egy egész számot (1–10), és írd ki a szorzótábláját 1-től 10-ig!</p>
+                            <div class="ib">
+                                <span class="lbl">Minta (szám = 3)</span>3 × 1 = 3<br />3 × 2 = 6<br />...<br />3 × 10 = 30
+                            </div>
+                            <div class="note">
+                                <strong>Fogalmak:</strong> for i in range(1, 11), szorzás, f-string a formázott kimenethez.
+                            </div>
+                        </div>
+                        <button class="st2" onclick="togS(this)">▶ Megoldás</button>
+                        <div class="sb">
+                            <div class="cb">
+                                <span class="cl">Python</span>
+                                <pre>n <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Szám: "</span>))
 <span class="k">for</span> i <span class="k">in</span> <span class="f">range</span>(<span class="n">1</span>, <span class="n">11</span>):
-    <span class="f">print</span>(<span class="s">f"{n} × {i} = {n * i}"</span>)</pre></div></div>
-      <div class="pr"><span class="pl">Nehézség <span style="color:var(--lc)">●●○○○○</span></span><span class="pv">5 pt</span></div>
-    </div>
-  </div>
+    <span class="f">print</span>(<span class="s">f"{n} × {i} = {n * i}"</span>)</pre>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <span class="pl">Nehézség <span style="color: var(--lc)">●●○○○○</span></span
+                            ><span class="pv">5 pt</span>
+                        </div>
+                    </div>
+                </div>
 
-  <div class="tc l3">
-    <div class="th" onclick="tog(this)">
-      <span class="tn">F8</span>
-      <div class="tw">
-        <div class="tt">N szám beolvasása listába</div>
-        <div class="tg"><span class="tag">for ciklus</span><span class="tag">lista</span><span class="tag">append()</span></div>
-      </div><span class="tto">▼</span>
-    </div>
-    <div class="tb">
-      <div class="tx">
-        <p>Kérj be n-t, majd olvasd be n egész számot egy listába! Ezután írd ki a listát, és azt is, hány elem van benne.</p>
-        <div class="ib"><span class="lbl">Minta (n = 4)</span>1. szám: 5<br>2. szám: 3<br>3. szám: 8<br>4. szám: 1<br>Lista: [5, 3, 8, 1]<br>Elemek száma: 4</div>
-        <div class="note"><strong>Fogalmak:</strong> üres lista [], append(), len(), for i in range(1, n+1).</div>
-      </div>
-      <button class="st2" onclick="togS(this)">▶ Megoldás</button>
-      <div class="sb"><div class="cb"><span class="cl">Python</span><pre>n <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Hány szám? "</span>))
+                <div class="tc l3">
+                    <div class="th" onclick="tog(this)">
+                        <span class="tn">F8</span>
+                        <div class="tw">
+                            <div class="tt">N szám beolvasása listába</div>
+                            <div class="tg">
+                                <span class="tag">for ciklus</span><span class="tag">lista</span><span class="tag">append()</span>
+                            </div>
+                        </div>
+                        <span class="tto">▼</span>
+                    </div>
+                    <div class="tb">
+                        <div class="tx">
+                            <p>
+                                Kérj be n-t, majd olvasd be n egész számot egy listába! Ezután írd ki a listát, és azt is, hány elem van
+                                benne.
+                            </p>
+                            <div class="ib">
+                                <span class="lbl">Minta (n = 4)</span>1. szám: 5<br />2. szám: 3<br />3. szám: 8<br />4. szám: 1<br />Lista:
+                                [5, 3, 8, 1]<br />Elemek száma: 4
+                            </div>
+                            <div class="note"><strong>Fogalmak:</strong> üres lista [], append(), len(), for i in range(1, n+1).</div>
+                        </div>
+                        <button class="st2" onclick="togS(this)">▶ Megoldás</button>
+                        <div class="sb">
+                            <div class="cb">
+                                <span class="cl">Python</span>
+                                <pre>n <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Hány szám? "</span>))
 szamok <span class="o">=</span> []
 <span class="k">for</span> i <span class="k">in</span> <span class="f">range</span>(<span class="n">1</span>, n <span class="o">+</span> <span class="n">1</span>):
     x <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">f"{i}. szám: "</span>))
     szamok.<span class="f">append</span>(x)
 <span class="f">print</span>(<span class="s">"Lista:"</span>, szamok)
-<span class="f">print</span>(<span class="s">"Elemek száma:"</span>, <span class="f">len</span>(szamok))</pre></div></div>
-      <div class="pr"><span class="pl">Nehézség <span style="color:var(--lc)">●●●○○○</span></span><span class="pv">7 pt</span></div>
-    </div>
-  </div>
+<span class="f">print</span>(<span class="s">"Elemek száma:"</span>, <span class="f">len</span>(szamok))</pre>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <span class="pl">Nehézség <span style="color: var(--lc)">●●●○○○</span></span
+                            ><span class="pv">7 pt</span>
+                        </div>
+                    </div>
+                </div>
 
-  <div class="tc l3">
-    <div class="th" onclick="tog(this)">
-      <span class="tn">F9</span>
-      <div class="tw">
-        <div class="tt">Páros számok kiírása</div>
-        <div class="tg"><span class="tag">for + if</span><span class="tag">% operátor</span><span class="tag">ciklusba ágyazott elágazás</span></div>
-      </div><span class="tto">▼</span>
-    </div>
-    <div class="tb">
-      <div class="tx">
-        <p>Olvasd be n szám listáját, majd írd ki külön azokat, amelyek párosak, és külön azokat, amelyek páratlanok!</p>
-        <div class="ib"><span class="lbl">Minta — lista: [4, 7, 2, 9, 6]</span>Páros számok: 4 2 6<br>Páratlan számok: 7 9</div>
-        <div class="note"><strong>Fogalmak:</strong> for … in lista (közvetlen iteráció), % 2 vizsgálat, print(x, end=" ") a sorban maradáshoz.</div>
-      </div>
-      <button class="st2" onclick="togS(this)">▶ Megoldás</button>
-      <div class="sb"><div class="cb"><span class="cl">Python</span><pre>n <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Hány szám? "</span>))
+                <div class="tc l3">
+                    <div class="th" onclick="tog(this)">
+                        <span class="tn">F9</span>
+                        <div class="tw">
+                            <div class="tt">Páros számok kiírása</div>
+                            <div class="tg">
+                                <span class="tag">for + if</span><span class="tag">% operátor</span
+                                ><span class="tag">ciklusba ágyazott elágazás</span>
+                            </div>
+                        </div>
+                        <span class="tto">▼</span>
+                    </div>
+                    <div class="tb">
+                        <div class="tx">
+                            <p>
+                                Olvasd be n szám listáját, majd írd ki külön azokat, amelyek párosak, és külön azokat, amelyek páratlanok!
+                            </p>
+                            <div class="ib">
+                                <span class="lbl">Minta — lista: [4, 7, 2, 9, 6]</span>Páros számok: 4 2 6<br />Páratlan számok: 7 9
+                            </div>
+                            <div class="note">
+                                <strong>Fogalmak:</strong> for … in lista (közvetlen iteráció), % 2 vizsgálat, print(x, end=" ") a sorban
+                                maradáshoz.
+                            </div>
+                        </div>
+                        <button class="st2" onclick="togS(this)">▶ Megoldás</button>
+                        <div class="sb">
+                            <div class="cb">
+                                <span class="cl">Python</span>
+                                <pre>n <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Hány szám? "</span>))
 szamok <span class="o">=</span> []
 <span class="k">for</span> i <span class="k">in</span> <span class="f">range</span>(<span class="n">1</span>, n <span class="o">+</span> <span class="n">1</span>):
     szamok.<span class="f">append</span>(<span class="f">int</span>(<span class="f">input</span>(<span class="s">f"{i}. szám: "</span>)))
@@ -384,36 +938,58 @@ szamok <span class="o">=</span> []
 <span class="f">print</span>(<span class="s">"Páratlan számok:"</span>, end<span class="o">=</span><span class="s">" "</span>)
 <span class="k">for</span> x <span class="k">in</span> szamok:
     <span class="k">if</span> x <span class="o">%</span> <span class="n">2</span> <span class="o">!=</span> <span class="n">0</span>:
-        <span class="f">print</span>(x, end<span class="o">=</span><span class="s">" "</span>)</pre></div></div>
-      <div class="pr"><span class="pl">Nehézség <span style="color:var(--lc)">●●●○○○</span></span><span class="pv">8 pt</span></div>
-    </div>
-  </div>
-</section>
+        <span class="f">print</span>(x, end<span class="o">=</span><span class="s">" "</span>)</pre>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <span class="pl">Nehézség <span style="color: var(--lc)">●●●○○○</span></span
+                            ><span class="pv">8 pt</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-<!-- ===== 4. EGY TÍPUSALGORITMUS ===== -->
-<section class="sec" id="s4">
-  <div class="sh">
-    <div class="sl"><span class="lb" style="background:#fce8e6;color:#7a1a12;border:1px solid #e09890">● 4. szint</span></div>
-    <h2 class="st">Egy típusalgoritmus tisztán</h2>
-    <p class="sd">Összegzés, megszámlálás, eldöntés, maximum-kiválasztás, kiválasztás — egyenként, egy-egy feladatban. Minden algoritmust saját ciklussal, beépített sum/max/min nélkül.</p>
-  </div>
+            <!-- ===== 4. EGY TÍPUSALGORITMUS ===== -->
+            <section class="sec" id="s4">
+                <div class="sh">
+                    <div class="sl">
+                        <span class="lb" style="background: #fce8e6; color: #7a1a12; border: 1px solid #e09890">● 4. szint</span>
+                    </div>
+                    <h2 class="st">Egy típusalgoritmus tisztán</h2>
+                    <p class="sd">
+                        Összegzés, megszámlálás, eldöntés, maximum-kiválasztás, kiválasztás — egyenként, egy-egy feladatban. Minden
+                        algoritmust saját ciklussal, beépített sum/max/min nélkül.
+                    </p>
+                </div>
 
-  <div class="tc l4">
-    <div class="th" onclick="tog(this)">
-      <span class="tn">F10</span>
-      <div class="tw">
-        <div class="tt">Összegzés és átlag</div>
-        <div class="tg"><span class="tag">összegzés</span><span class="tag">akkumulátor</span><span class="tag">átlag</span></div>
-      </div><span class="tto">▼</span>
-    </div>
-    <div class="tb">
-      <div class="tx">
-        <p>Olvass be n mérési értéket (egész szám)! Számítsd ki az összegüket és az átlagukat! Az átlagot 2 tizedesjegyre írd ki.</p>
-        <div class="ib"><span class="lbl">Minta (n=5, értékek: 4 7 2 9 3)</span>Összeg: 25<br>Átlag: 5.00</div>
-        <div class="note"><strong>Algoritmus:</strong> ossz = 0, majd for ciklusban ossz += x. Átlag = ossz / n. <strong>Fontos:</strong> ne használj beépített sum()-ot!</div>
-      </div>
-      <button class="st2" onclick="togS(this)">▶ Megoldás</button>
-      <div class="sb"><div class="cb"><span class="cl">Python</span><pre>n <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Hány érték? "</span>))
+                <div class="tc l4">
+                    <div class="th" onclick="tog(this)">
+                        <span class="tn">F10</span>
+                        <div class="tw">
+                            <div class="tt">Összegzés és átlag</div>
+                            <div class="tg">
+                                <span class="tag">összegzés</span><span class="tag">akkumulátor</span><span class="tag">átlag</span>
+                            </div>
+                        </div>
+                        <span class="tto">▼</span>
+                    </div>
+                    <div class="tb">
+                        <div class="tx">
+                            <p>
+                                Olvass be n mérési értéket (egész szám)! Számítsd ki az összegüket és az átlagukat! Az átlagot 2
+                                tizedesjegyre írd ki.
+                            </p>
+                            <div class="ib"><span class="lbl">Minta (n=5, értékek: 4 7 2 9 3)</span>Összeg: 25<br />Átlag: 5.00</div>
+                            <div class="note">
+                                <strong>Algoritmus:</strong> ossz = 0, majd for ciklusban ossz += x. Átlag = ossz / n.
+                                <strong>Fontos:</strong> ne használj beépített sum()-ot!
+                            </div>
+                        </div>
+                        <button class="st2" onclick="togS(this)">▶ Megoldás</button>
+                        <div class="sb">
+                            <div class="cb">
+                                <span class="cl">Python</span>
+                                <pre>n <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Hány érték? "</span>))
 ertekek <span class="o">=</span> []
 <span class="k">for</span> i <span class="k">in</span> <span class="f">range</span>(<span class="n">1</span>, n <span class="o">+</span> <span class="n">1</span>):
     ertekek.<span class="f">append</span>(<span class="f">int</span>(<span class="f">input</span>(<span class="s">f"{i}. érték: "</span>)))
@@ -423,31 +999,47 @@ ossz <span class="o">=</span> <span class="n">0</span>
     ossz <span class="o">+=</span> x
 
 <span class="f">print</span>(<span class="s">"Összeg:"</span>, ossz)
-<span class="f">print</span>(<span class="s">f"Átlag: {ossz / n<span class="o">:.2f</span>}"</span>)</pre></div></div>
-      <div class="pr"><span class="pl">Nehézség <span style="color:var(--lc)">●●●○○○</span></span><span class="pv">8 pt</span></div>
-    </div>
-  </div>
+<span class="f">print</span>(<span class="s">f"Átlag: {ossz / n<span class="o">:.2f</span>}"</span>)</pre>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <span class="pl">Nehézség <span style="color: var(--lc)">●●●○○○</span></span
+                            ><span class="pv">8 pt</span>
+                        </div>
+                    </div>
+                </div>
 
-  <div class="tc l4">
-    <div class="th" onclick="tog(this)">
-      <span class="tn">F11</span>
-      <div class="tw">
-        <div class="tt">Megszámlálás + eldöntés</div>
-        <div class="tg"><span class="tag">megszámlálás</span><span class="tag">eldöntés</span><span class="tag">break</span></div>
-      </div><span class="tto">▼</span>
-    </div>
-    <div class="tb">
-      <div class="tx">
-        <p>Olvass be n egész számot listába! Határozd meg:</p>
-        <ol>
-          <li><strong>Megszámlálás:</strong> hány pozitív szám van a listában?</li>
-          <li><strong>Eldöntés:</strong> van-e a listában 0 értékű elem? (break-kel állj meg, ha megtaláltad!)</li>
-        </ol>
-        <div class="ib"><span class="lbl">Minta — lista: [3, -1, 0, 5, -2]</span>Pozitív számok: 2<br>Van nulla: Igen</div>
-        <div class="note"><strong>Algoritmus:</strong> db = 0, for ciklusban if feltétel: db += 1. Eldöntésnél: van = False, break ha megtaláltuk.</div>
-      </div>
-      <button class="st2" onclick="togS(this)">▶ Megoldás</button>
-      <div class="sb"><div class="cb"><span class="cl">Python</span><pre>n <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Hány szám? "</span>))
+                <div class="tc l4">
+                    <div class="th" onclick="tog(this)">
+                        <span class="tn">F11</span>
+                        <div class="tw">
+                            <div class="tt">Megszámlálás + eldöntés</div>
+                            <div class="tg">
+                                <span class="tag">megszámlálás</span><span class="tag">eldöntés</span><span class="tag">break</span>
+                            </div>
+                        </div>
+                        <span class="tto">▼</span>
+                    </div>
+                    <div class="tb">
+                        <div class="tx">
+                            <p>Olvass be n egész számot listába! Határozd meg:</p>
+                            <ol>
+                                <li><strong>Megszámlálás:</strong> hány pozitív szám van a listában?</li>
+                                <li><strong>Eldöntés:</strong> van-e a listában 0 értékű elem? (break-kel állj meg, ha megtaláltad!)</li>
+                            </ol>
+                            <div class="ib">
+                                <span class="lbl">Minta — lista: [3, -1, 0, 5, -2]</span>Pozitív számok: 2<br />Van nulla: Igen
+                            </div>
+                            <div class="note">
+                                <strong>Algoritmus:</strong> db = 0, for ciklusban if feltétel: db += 1. Eldöntésnél: van = False, break ha
+                                megtaláltuk.
+                            </div>
+                        </div>
+                        <button class="st2" onclick="togS(this)">▶ Megoldás</button>
+                        <div class="sb">
+                            <div class="cb">
+                                <span class="cl">Python</span>
+                                <pre>n <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Hány szám? "</span>))
 szamok <span class="o">=</span> []
 <span class="k">for</span> i <span class="k">in</span> <span class="f">range</span>(<span class="n">1</span>, n <span class="o">+</span> <span class="n">1</span>):
     szamok.<span class="f">append</span>(<span class="f">int</span>(<span class="f">input</span>(<span class="s">f"{i}. szám: "</span>)))
@@ -465,27 +1057,47 @@ van <span class="o">=</span> <span class="k">False</span>
     <span class="k">if</span> x <span class="o">==</span> <span class="n">0</span>:
         van <span class="o">=</span> <span class="k">True</span>
         <span class="k">break</span>
-<span class="f">print</span>(<span class="s">"Van nulla:"</span>, <span class="s">"Igen"</span> <span class="k">if</span> van <span class="k">else</span> <span class="s">"Nem"</span>)</pre></div></div>
-      <div class="pr"><span class="pl">Nehézség <span style="color:var(--lc)">●●●○○○</span></span><span class="pv">10 pt</span></div>
-    </div>
-  </div>
+<span class="f">print</span>(<span class="s">"Van nulla:"</span>, <span class="s">"Igen"</span> <span class="k">if</span> van <span class="k">else</span> <span class="s">"Nem"</span>)</pre>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <span class="pl">Nehézség <span style="color: var(--lc)">●●●○○○</span></span
+                            ><span class="pv">10 pt</span>
+                        </div>
+                    </div>
+                </div>
 
-  <div class="tc l4">
-    <div class="th" onclick="tog(this)">
-      <span class="tn">F12</span>
-      <div class="tw">
-        <div class="tt">Maximum és minimum megkeresése</div>
-        <div class="tg"><span class="tag">maximum-kiválasztás</span><span class="tag">minimum</span><span class="tag">index</span></div>
-      </div><span class="tto">▼</span>
-    </div>
-    <div class="tb">
-      <div class="tx">
-        <p>Olvass be n egész számot listába! Keresd meg a <strong>legnagyobb</strong> és a <strong>legkisebb</strong> értéket, és azt is, hányadik helyen áll (1-es indexeléssel)!</p>
-        <div class="ib"><span class="lbl">Minta — lista: [4, 7, 1, 9, 3]</span>Legnagyobb: 9 (4. helyen)<br>Legkisebb: 1 (3. helyen)</div>
-        <div class="note"><strong>Algoritmus:</strong> maxertek = lista[0], maxi = 0. For ciklusban enumerate()-tel: ha x &gt; maxertek, frissítjük. <strong>Ne használj beépített max()-ot!</strong></div>
-      </div>
-      <button class="st2" onclick="togS(this)">▶ Megoldás</button>
-      <div class="sb"><div class="cb"><span class="cl">Python</span><pre>n <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Hány szám? "</span>))
+                <div class="tc l4">
+                    <div class="th" onclick="tog(this)">
+                        <span class="tn">F12</span>
+                        <div class="tw">
+                            <div class="tt">Maximum és minimum megkeresése</div>
+                            <div class="tg">
+                                <span class="tag">maximum-kiválasztás</span><span class="tag">minimum</span><span class="tag">index</span>
+                            </div>
+                        </div>
+                        <span class="tto">▼</span>
+                    </div>
+                    <div class="tb">
+                        <div class="tx">
+                            <p>
+                                Olvass be n egész számot listába! Keresd meg a <strong>legnagyobb</strong> és a
+                                <strong>legkisebb</strong> értéket, és azt is, hányadik helyen áll (1-es indexeléssel)!
+                            </p>
+                            <div class="ib">
+                                <span class="lbl">Minta — lista: [4, 7, 1, 9, 3]</span>Legnagyobb: 9 (4. helyen)<br />Legkisebb: 1 (3.
+                                helyen)
+                            </div>
+                            <div class="note">
+                                <strong>Algoritmus:</strong> maxertek = lista[0], maxi = 0. For ciklusban enumerate()-tel: ha x &gt;
+                                maxertek, frissítjük. <strong>Ne használj beépített max()-ot!</strong>
+                            </div>
+                        </div>
+                        <button class="st2" onclick="togS(this)">▶ Megoldás</button>
+                        <div class="sb">
+                            <div class="cb">
+                                <span class="cl">Python</span>
+                                <pre>n <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Hány szám? "</span>))
 szamok <span class="o">=</span> []
 <span class="k">for</span> i <span class="k">in</span> <span class="f">range</span>(<span class="n">1</span>, n <span class="o">+</span> <span class="n">1</span>):
     szamok.<span class="f">append</span>(<span class="f">int</span>(<span class="f">input</span>(<span class="s">f"{i}. szám: "</span>)))
@@ -504,42 +1116,64 @@ mini <span class="o">=</span> <span class="n">0</span>
         mini <span class="o">=</span> i
 
 <span class="f">print</span>(<span class="s">f"Legnagyobb: {maxertek} ({maxi + 1}. helyen)"</span>)
-<span class="f">print</span>(<span class="s">f"Legkisebb: {minertek} ({mini + 1}. helyen)"</span>)</pre></div></div>
-      <div class="pr"><span class="pl">Nehézség <span style="color:var(--lc)">●●●●○○</span></span><span class="pv">10 pt</span></div>
-    </div>
-  </div>
-</section>
+<span class="f">print</span>(<span class="s">f"Legkisebb: {minertek} ({mini + 1}. helyen)"</span>)</pre>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <span class="pl">Nehézség <span style="color: var(--lc)">●●●●○○</span></span
+                            ><span class="pv">10 pt</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-<!-- ===== 5. TÖBB TÍPUSALGORITMUS ===== -->
-<section class="sec" id="s5">
-  <div class="sh">
-    <div class="sl"><span class="lb" style="background:#f0e8f8;color:#4a1a7a;border:1px solid #c0a0e0">● 5. szint</span></div>
-    <h2 class="st">Több típusalgoritmus egy feladatban</h2>
-    <p class="sd">Kiválogatás, szétválogatás, több algoritmus kombinálva. Valószerű, érettségi-stílusú feladatok — egy beolvasott adatsoron több kérdés.</p>
-  </div>
+            <!-- ===== 5. TÖBB TÍPUSALGORITMUS ===== -->
+            <section class="sec" id="s5">
+                <div class="sh">
+                    <div class="sl">
+                        <span class="lb" style="background: #f0e8f8; color: #4a1a7a; border: 1px solid #c0a0e0">● 5. szint</span>
+                    </div>
+                    <h2 class="st">Több típusalgoritmus egy feladatban</h2>
+                    <p class="sd">
+                        Kiválogatás, szétválogatás, több algoritmus kombinálva. Valószerű, érettségi-stílusú feladatok — egy beolvasott
+                        adatsoron több kérdés.
+                    </p>
+                </div>
 
-  <div class="tc l5">
-    <div class="th" onclick="tog(this)">
-      <span class="tn">F13</span>
-      <div class="tw">
-        <div class="tt">Osztályzatok elemzése</div>
-        <div class="tg"><span class="tag">összegzés</span><span class="tag">megszámlálás</span><span class="tag">max</span><span class="tag">kiválogatás</span></div>
-      </div><span class="tto">▼</span>
-    </div>
-    <div class="tb">
-      <div class="tx">
-        <p>Olvass be n tanuló jegyét (1–5)! Határozd meg:</p>
-        <ol>
-          <li>Az osztály jegyeinek átlagát (2 tizedesjegy)</li>
-          <li>Hány tanuló kapott jelest (5-öst)?</li>
-          <li>Mi a legjobb jegy? (max-kiválasztással, beépített max() nélkül)</li>
-          <li>Írd ki azokat a sorszámokat (1-től), ahol a jegy 2-es vagy annál rosszabb!</li>
-        </ol>
-        <div class="ib"><span class="lbl">Minta — jegyek: [4, 2, 5, 1, 3, 5]</span>Átlag: 3.33<br>Jeles tanulók: 2<br>Legjobb jegy: 5<br>Gyenge tanulók sorszámai: 2 4</div>
-        <div class="note"><strong>Algoritmus:</strong> Mindegyiket külön ciklussal! Kiválogatásnál enumerate(lista, 1) a sorszámhoz.</div>
-      </div>
-      <button class="st2" onclick="togS(this)">▶ Megoldás</button>
-      <div class="sb"><div class="cb"><span class="cl">Python</span><pre>n <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Tanulók száma: "</span>))
+                <div class="tc l5">
+                    <div class="th" onclick="tog(this)">
+                        <span class="tn">F13</span>
+                        <div class="tw">
+                            <div class="tt">Osztályzatok elemzése</div>
+                            <div class="tg">
+                                <span class="tag">összegzés</span><span class="tag">megszámlálás</span><span class="tag">max</span
+                                ><span class="tag">kiválogatás</span>
+                            </div>
+                        </div>
+                        <span class="tto">▼</span>
+                    </div>
+                    <div class="tb">
+                        <div class="tx">
+                            <p>Olvass be n tanuló jegyét (1–5)! Határozd meg:</p>
+                            <ol>
+                                <li>Az osztály jegyeinek átlagát (2 tizedesjegy)</li>
+                                <li>Hány tanuló kapott jelest (5-öst)?</li>
+                                <li>Mi a legjobb jegy? (max-kiválasztással, beépített max() nélkül)</li>
+                                <li>Írd ki azokat a sorszámokat (1-től), ahol a jegy 2-es vagy annál rosszabb!</li>
+                            </ol>
+                            <div class="ib">
+                                <span class="lbl">Minta — jegyek: [4, 2, 5, 1, 3, 5]</span>Átlag: 3.33<br />Jeles tanulók: 2<br />Legjobb
+                                jegy: 5<br />Gyenge tanulók sorszámai: 2 4
+                            </div>
+                            <div class="note">
+                                <strong>Algoritmus:</strong> Mindegyiket külön ciklussal! Kiválogatásnál enumerate(lista, 1) a sorszámhoz.
+                            </div>
+                        </div>
+                        <button class="st2" onclick="togS(this)">▶ Megoldás</button>
+                        <div class="sb">
+                            <div class="cb">
+                                <span class="cl">Python</span>
+                                <pre>n <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Tanulók száma: "</span>))
 jegyek <span class="o">=</span> []
 <span class="k">for</span> i <span class="k">in</span> <span class="f">range</span>(<span class="n">1</span>, n <span class="o">+</span> <span class="n">1</span>):
     jegyek.<span class="f">append</span>(<span class="f">int</span>(<span class="f">input</span>(<span class="s">f"{i}. jegy: "</span>)))
@@ -568,32 +1202,50 @@ legjobb <span class="o">=</span> jegyek[<span class="n">0</span>]
 <span class="f">print</span>(<span class="s">"Gyenge tanulók sorszámai:"</span>, end<span class="o">=</span><span class="s">" "</span>)
 <span class="k">for</span> i, j <span class="k">in</span> <span class="f">enumerate</span>(jegyek, <span class="n">1</span>):
     <span class="k">if</span> j <span class="o">&lt;=</span> <span class="n">2</span>:
-        <span class="f">print</span>(i, end<span class="o">=</span><span class="s">" "</span>)</pre></div></div>
-      <div class="pr"><span class="pl">Nehézség <span style="color:var(--lc)">●●●●○○</span></span><span class="pv">13 pt</span></div>
-    </div>
-  </div>
+        <span class="f">print</span>(i, end<span class="o">=</span><span class="s">" "</span>)</pre>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <span class="pl">Nehézség <span style="color: var(--lc)">●●●●○○</span></span
+                            ><span class="pv">13 pt</span>
+                        </div>
+                    </div>
+                </div>
 
-  <div class="tc l5">
-    <div class="th" onclick="tog(this)">
-      <span class="tn">F14</span>
-      <div class="tw">
-        <div class="tt">Futóverseny eredmények</div>
-        <div class="tg"><span class="tag">max (névvel)</span><span class="tag">megszámlálás</span><span class="tag">eldöntés</span><span class="tag">párhuzamos lista</span></div>
-      </div><span class="tto">▼</span>
-    </div>
-    <div class="tb">
-      <div class="tx">
-        <p>Kérj be n futó nevét és futásidejét másodpercben (egész szám)! Határozd meg:</p>
-        <ol>
-          <li>Ki futott a leggyorsabban (neve és ideje)?</li>
-          <li>Hány futó teljesített 60 másodpercen belül?</li>
-          <li>Van-e köztük valaki, aki pontosan 55 másodpercet futott?</li>
-        </ol>
-        <div class="ib"><span class="lbl">Minta</span>Leggyorsabb: Kovács Péter (52 mp)<br>60mp alatt: 3 fő<br>Van 55 mp-es futó: Igen</div>
-        <div class="note"><strong>Algoritmus:</strong> Párhuzamos listák (nevek, idők). Max-kiválasztásnál az indexet tárold, hogy a névhez is hozzáférj.</div>
-      </div>
-      <button class="st2" onclick="togS(this)">▶ Megoldás</button>
-      <div class="sb"><div class="cb"><span class="cl">Python</span><pre>n <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Futók száma: "</span>))
+                <div class="tc l5">
+                    <div class="th" onclick="tog(this)">
+                        <span class="tn">F14</span>
+                        <div class="tw">
+                            <div class="tt">Futóverseny eredmények</div>
+                            <div class="tg">
+                                <span class="tag">max (névvel)</span><span class="tag">megszámlálás</span><span class="tag">eldöntés</span
+                                ><span class="tag">párhuzamos lista</span>
+                            </div>
+                        </div>
+                        <span class="tto">▼</span>
+                    </div>
+                    <div class="tb">
+                        <div class="tx">
+                            <p>Kérj be n futó nevét és futásidejét másodpercben (egész szám)! Határozd meg:</p>
+                            <ol>
+                                <li>Ki futott a leggyorsabban (neve és ideje)?</li>
+                                <li>Hány futó teljesített 60 másodpercen belül?</li>
+                                <li>Van-e köztük valaki, aki pontosan 55 másodpercet futott?</li>
+                            </ol>
+                            <div class="ib">
+                                <span class="lbl">Minta</span>Leggyorsabb: Kovács Péter (52 mp)<br />60mp alatt: 3 fő<br />Van 55 mp-es
+                                futó: Igen
+                            </div>
+                            <div class="note">
+                                <strong>Algoritmus:</strong> Párhuzamos listák (nevek, idők). Max-kiválasztásnál az indexet tárold, hogy a
+                                névhez is hozzáférj.
+                            </div>
+                        </div>
+                        <button class="st2" onclick="togS(this)">▶ Megoldás</button>
+                        <div class="sb">
+                            <div class="cb">
+                                <span class="cl">Python</span>
+                                <pre>n <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Futók száma: "</span>))
 nevek <span class="o">=</span> []
 idok <span class="o">=</span> []
 <span class="k">for</span> _ <span class="k">in</span> <span class="f">range</span>(n):
@@ -620,27 +1272,47 @@ van <span class="o">=</span> <span class="k">False</span>
     <span class="k">if</span> t <span class="o">==</span> <span class="n">55</span>:
         van <span class="o">=</span> <span class="k">True</span>
         <span class="k">break</span>
-<span class="f">print</span>(<span class="s">"Van 55mp-es futó:"</span>, <span class="s">"Igen"</span> <span class="k">if</span> van <span class="k">else</span> <span class="s">"Nem"</span>)</pre></div></div>
-      <div class="pr"><span class="pl">Nehézség <span style="color:var(--lc)">●●●●○○</span></span><span class="pv">13 pt</span></div>
-    </div>
-  </div>
+<span class="f">print</span>(<span class="s">"Van 55mp-es futó:"</span>, <span class="s">"Igen"</span> <span class="k">if</span> van <span class="k">else</span> <span class="s">"Nem"</span>)</pre>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <span class="pl">Nehézség <span style="color: var(--lc)">●●●●○○</span></span
+                            ><span class="pv">13 pt</span>
+                        </div>
+                    </div>
+                </div>
 
-  <div class="tc l5">
-    <div class="th" onclick="tog(this)">
-      <span class="tn">F15</span>
-      <div class="tw">
-        <div class="tt">Szétválogatás két listába</div>
-        <div class="tg"><span class="tag">szétválogatás</span><span class="tag">két lista</span><span class="tag">kiválogatás</span></div>
-      </div><span class="tto">▼</span>
-    </div>
-    <div class="tb">
-      <div class="tx">
-        <p>Olvass be n egész számot! Válaszd szét őket <strong>pozitívakra</strong> és <strong>nem pozitívakra</strong> (nulla és negatív) két külön listába! Írd ki mindkét listát, és elemszámukat!</p>
-        <div class="ib"><span class="lbl">Minta — számok: [3, -1, 5, 0, -2, 4]</span>Pozitív: [3, 5, 4] → 3 db<br>Nem pozitív: [-1, 0, -2] → 3 db</div>
-        <div class="note"><strong>Algoritmus:</strong> Két üres lista. For ciklusban if-else: az egyik vagy másik listába append().</div>
-      </div>
-      <button class="st2" onclick="togS(this)">▶ Megoldás</button>
-      <div class="sb"><div class="cb"><span class="cl">Python</span><pre>n <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Hány szám? "</span>))
+                <div class="tc l5">
+                    <div class="th" onclick="tog(this)">
+                        <span class="tn">F15</span>
+                        <div class="tw">
+                            <div class="tt">Szétválogatás két listába</div>
+                            <div class="tg">
+                                <span class="tag">szétválogatás</span><span class="tag">két lista</span><span class="tag">kiválogatás</span>
+                            </div>
+                        </div>
+                        <span class="tto">▼</span>
+                    </div>
+                    <div class="tb">
+                        <div class="tx">
+                            <p>
+                                Olvass be n egész számot! Válaszd szét őket <strong>pozitívakra</strong> és
+                                <strong>nem pozitívakra</strong> (nulla és negatív) két külön listába! Írd ki mindkét listát, és
+                                elemszámukat!
+                            </p>
+                            <div class="ib">
+                                <span class="lbl">Minta — számok: [3, -1, 5, 0, -2, 4]</span>Pozitív: [3, 5, 4] → 3 db<br />Nem pozitív:
+                                [-1, 0, -2] → 3 db
+                            </div>
+                            <div class="note">
+                                <strong>Algoritmus:</strong> Két üres lista. For ciklusban if-else: az egyik vagy másik listába append().
+                            </div>
+                        </div>
+                        <button class="st2" onclick="togS(this)">▶ Megoldás</button>
+                        <div class="sb">
+                            <div class="cb">
+                                <span class="cl">Python</span>
+                                <pre>n <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Hány szám? "</span>))
 szamok <span class="o">=</span> []
 <span class="k">for</span> i <span class="k">in</span> <span class="f">range</span>(<span class="n">1</span>, n <span class="o">+</span> <span class="n">1</span>):
     szamok.<span class="f">append</span>(<span class="f">int</span>(<span class="f">input</span>(<span class="s">f"{i}. szám: "</span>)))
@@ -654,40 +1326,62 @@ nem_poz <span class="o">=</span> []
         nem_poz.<span class="f">append</span>(x)
 
 <span class="f">print</span>(<span class="s">f"Pozitív: {pozitiv} → {<span class="f">len</span>(pozitiv)} db"</span>)
-<span class="f">print</span>(<span class="s">f"Nem pozitív: {nem_poz} → {<span class="f">len</span>(nem_poz)} db"</span>)</pre></div></div>
-      <div class="pr"><span class="pl">Nehézség <span style="color:var(--lc)">●●●●○○</span></span><span class="pv">12 pt</span></div>
-    </div>
-  </div>
-</section>
+<span class="f">print</span>(<span class="s">f"Nem pozitív: {nem_poz} → {<span class="f">len</span>(nem_poz)} db"</span>)</pre>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <span class="pl">Nehézség <span style="color: var(--lc)">●●●●○○</span></span
+                            ><span class="pv">12 pt</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-<!-- ===== 6. ELJÁRÁSOK ===== -->
-<section class="sec" id="s6">
-  <div class="sh">
-    <div class="sl"><span class="lb" style="background:#fdf8e6;color:#6a4800;border:1px solid #d8c060">● 6. szint</span></div>
-    <h2 class="st">Eljárások és függvények</h2>
-    <p class="sd">A típusalgoritmusokat saját függvényekbe szervezzük. Paraméter, return, függvényhívás. A középszint legmagasabb programozási elvárása.</p>
-  </div>
+            <!-- ===== 6. ELJÁRÁSOK ===== -->
+            <section class="sec" id="s6">
+                <div class="sh">
+                    <div class="sl">
+                        <span class="lb" style="background: #fdf8e6; color: #6a4800; border: 1px solid #d8c060">● 6. szint</span>
+                    </div>
+                    <h2 class="st">Eljárások és függvények</h2>
+                    <p class="sd">
+                        A típusalgoritmusokat saját függvényekbe szervezzük. Paraméter, return, függvényhívás. A középszint legmagasabb
+                        programozási elvárása.
+                    </p>
+                </div>
 
-  <div class="tc l6">
-    <div class="th" onclick="tog(this)">
-      <span class="tn">F16</span>
-      <div class="tw">
-        <div class="tt">Algoritmusok függvényként</div>
-        <div class="tg"><span class="tag">def</span><span class="tag">paraméter</span><span class="tag">return</span><span class="tag">függvényhívás</span></div>
-      </div><span class="tto">▼</span>
-    </div>
-    <div class="tb">
-      <div class="tx">
-        <p>Írd meg az alábbi három függvényt, majd a főprogramban hívd meg mindegyiket ugyanarra a beolvasott listára!</p>
-        <ol>
-          <li><code>osszeg(lista)</code> — visszaadja az elemek összegét</li>
-          <li><code>megszamlal(lista, ertek)</code> — visszaadja, hányszor szerepel az adott érték</li>
-          <li><code>legnagyobb(lista)</code> — visszaadja a legnagyobb elemet</li>
-        </ol>
-        <div class="note"><strong>Fogalmak:</strong> def, paraméterátadás, return, függvény meghívása. Minden függvény egy feladatot csinál, és return-nal ad vissza eredményt.</div>
-      </div>
-      <button class="st2" onclick="togS(this)">▶ Megoldás</button>
-      <div class="sb"><div class="cb"><span class="cl">Python</span><pre><span class="k">def</span> <span class="f">osszeg</span>(lista):
+                <div class="tc l6">
+                    <div class="th" onclick="tog(this)">
+                        <span class="tn">F16</span>
+                        <div class="tw">
+                            <div class="tt">Algoritmusok függvényként</div>
+                            <div class="tg">
+                                <span class="tag">def</span><span class="tag">paraméter</span><span class="tag">return</span
+                                ><span class="tag">függvényhívás</span>
+                            </div>
+                        </div>
+                        <span class="tto">▼</span>
+                    </div>
+                    <div class="tb">
+                        <div class="tx">
+                            <p>
+                                Írd meg az alábbi három függvényt, majd a főprogramban hívd meg mindegyiket ugyanarra a beolvasott listára!
+                            </p>
+                            <ol>
+                                <li><code>osszeg(lista)</code> — visszaadja az elemek összegét</li>
+                                <li><code>megszamlal(lista, ertek)</code> — visszaadja, hányszor szerepel az adott érték</li>
+                                <li><code>legnagyobb(lista)</code> — visszaadja a legnagyobb elemet</li>
+                            </ol>
+                            <div class="note">
+                                <strong>Fogalmak:</strong> def, paraméterátadás, return, függvény meghívása. Minden függvény egy feladatot
+                                csinál, és return-nal ad vissza eredményt.
+                            </div>
+                        </div>
+                        <button class="st2" onclick="togS(this)">▶ Megoldás</button>
+                        <div class="sb">
+                            <div class="cb">
+                                <span class="cl">Python</span>
+                                <pre><span class="k">def</span> <span class="f">osszeg</span>(lista):
     s <span class="o">=</span> <span class="n">0</span>
     <span class="k">for</span> x <span class="k">in</span> lista:
         s <span class="o">+=</span> x
@@ -716,32 +1410,53 @@ szamok <span class="o">=</span> []
 <span class="f">print</span>(<span class="s">"Összeg:"</span>, <span class="f">osszeg</span>(szamok))
 keresett <span class="o">=</span> <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Keresett érték: "</span>))
 <span class="f">print</span>(<span class="s">f"{keresett} előfordulása:"</span>, <span class="f">megszamlal</span>(szamok, keresett))
-<span class="f">print</span>(<span class="s">"Legnagyobb:"</span>, <span class="f">legnagyobb</span>(szamok))</pre></div></div>
-      <div class="pr"><span class="pl">Nehézség <span style="color:var(--lc)">●●●●●○</span></span><span class="pv">15 pt</span></div>
-    </div>
-  </div>
+<span class="f">print</span>(<span class="s">"Legnagyobb:"</span>, <span class="f">legnagyobb</span>(szamok))</pre>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <span class="pl">Nehézség <span style="color: var(--lc)">●●●●●○</span></span
+                            ><span class="pv">15 pt</span>
+                        </div>
+                    </div>
+                </div>
 
-  <div class="tc l6">
-    <div class="th" onclick="tog(this)">
-      <span class="tn">F17</span>
-      <div class="tw">
-        <div class="tt">Jegykezelő program eljárásokkal</div>
-        <div class="tg"><span class="tag">több függvény</span><span class="tag">párhuzamos lista</span><span class="tag">összetett feladat</span></div>
-      </div><span class="tto">▼</span>
-    </div>
-    <div class="tb">
-      <div class="tx">
-        <p>Kérj be n tanuló nevét és matematika jegyét! Írj függvényeket az alábbi feladatokra, majd a főprogramban hívd meg őket:</p>
-        <ol>
-          <li><code>atlag(jegyek)</code> — az átlag értéke</li>
-          <li><code>legjobb_tanulo(nevek, jegyek)</code> — a legjobb jegyű tanuló neve</li>
-          <li><code>atlag_felett(nevek, jegyek)</code> — azok nevei, akik átlag feletti jegyet kaptak</li>
-        </ol>
-        <div class="ib"><span class="lbl">Minta</span>Átlag: 3.50<br>Legjobb tanuló: Nagy Béla<br>Átlag felettiek: Nagy Béla, Kiss Réka</div>
-        <div class="note"><strong>Fogalmak:</strong> Függvény hív függvényt (atlag_felett meghívhatja az atlag-ot). Párhuzamos listák indexelése.</div>
-      </div>
-      <button class="st2" onclick="togS(this)">▶ Megoldás</button>
-      <div class="sb"><div class="cb"><span class="cl">Python</span><pre><span class="k">def</span> <span class="f">atlag</span>(jegyek):
+                <div class="tc l6">
+                    <div class="th" onclick="tog(this)">
+                        <span class="tn">F17</span>
+                        <div class="tw">
+                            <div class="tt">Jegykezelő program eljárásokkal</div>
+                            <div class="tg">
+                                <span class="tag">több függvény</span><span class="tag">párhuzamos lista</span
+                                ><span class="tag">összetett feladat</span>
+                            </div>
+                        </div>
+                        <span class="tto">▼</span>
+                    </div>
+                    <div class="tb">
+                        <div class="tx">
+                            <p>
+                                Kérj be n tanuló nevét és matematika jegyét! Írj függvényeket az alábbi feladatokra, majd a főprogramban
+                                hívd meg őket:
+                            </p>
+                            <ol>
+                                <li><code>atlag(jegyek)</code> — az átlag értéke</li>
+                                <li><code>legjobb_tanulo(nevek, jegyek)</code> — a legjobb jegyű tanuló neve</li>
+                                <li><code>atlag_felett(nevek, jegyek)</code> — azok nevei, akik átlag feletti jegyet kaptak</li>
+                            </ol>
+                            <div class="ib">
+                                <span class="lbl">Minta</span>Átlag: 3.50<br />Legjobb tanuló: Nagy Béla<br />Átlag felettiek: Nagy Béla,
+                                Kiss Réka
+                            </div>
+                            <div class="note">
+                                <strong>Fogalmak:</strong> Függvény hív függvényt (atlag_felett meghívhatja az atlag-ot). Párhuzamos listák
+                                indexelése.
+                            </div>
+                        </div>
+                        <button class="st2" onclick="togS(this)">▶ Megoldás</button>
+                        <div class="sb">
+                            <div class="cb">
+                                <span class="cl">Python</span>
+                                <pre><span class="k">def</span> <span class="f">atlag</span>(jegyek):
     ossz <span class="o">=</span> <span class="n">0</span>
     <span class="k">for</span> j <span class="k">in</span> jegyek:
         ossz <span class="o">+=</span> j
@@ -772,32 +1487,47 @@ jegyek <span class="o">=</span> []
 
 <span class="f">print</span>(<span class="s">f"Átlag: {<span class="f">atlag</span>(jegyek)<span class="o">:.2f</span>}"</span>)
 <span class="f">print</span>(<span class="s">"Legjobb tanuló:"</span>, <span class="f">legjobb_tanulo</span>(nevek, jegyek))
-<span class="f">print</span>(<span class="s">"Átlag felettiek:"</span>, <span class="s">", "</span>.<span class="f">join</span>(<span class="f">atlag_felett</span>(nevek, jegyek)))</pre></div></div>
-      <div class="pr"><span class="pl">Nehézség <span style="color:var(--lc)">●●●●●○</span></span><span class="pv">16 pt</span></div>
-    </div>
-  </div>
+<span class="f">print</span>(<span class="s">"Átlag felettiek:"</span>, <span class="s">", "</span>.<span class="f">join</span>(<span class="f">atlag_felett</span>(nevek, jegyek)))</pre>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <span class="pl">Nehézség <span style="color: var(--lc)">●●●●●○</span></span
+                            ><span class="pv">16 pt</span>
+                        </div>
+                    </div>
+                </div>
 
-  <div class="tc l6">
-    <div class="th" onclick="tog(this)">
-      <span class="tn">F18</span>
-      <div class="tw">
-        <div class="tt">Termékek nyilvántartása</div>
-        <div class="tg"><span class="tag">összetett feladat</span><span class="tag">több algoritmus</span><span class="tag">függvények</span></div>
-      </div><span class="tto">▼</span>
-    </div>
-    <div class="tb">
-      <div class="tx">
-        <p>Kérj be n termék nevét és árát (egész Ft)! Függvényekkel oldd meg:</p>
-        <ol>
-          <li><code>legdragabb(nevek, arak)</code> — a legdrágább termék neve és ára</li>
-          <li><code>olcso_termekek(nevek, arak, hatar)</code> — azok neve, amelyek olcsóbbak a határárnál</li>
-          <li><code>atlagos_ar(arak)</code> — az átlagos ár egész számra kerekítve</li>
-          <li><code>dragabb_az_atlagnal(nevek, arak)</code> — hány termék drágább az átlagnál?</li>
-        </ol>
-        <div class="note"><strong>Fogalmak:</strong> Összes előző fogalom kombinálva. A 4. függvény a 3.-at hívja meg belül. Érettségi szintű összetettség.</div>
-      </div>
-      <button class="st2" onclick="togS(this)">▶ Megoldás</button>
-      <div class="sb"><div class="cb"><span class="cl">Python</span><pre><span class="k">def</span> <span class="f">legdragabb</span>(nevek, arak):
+                <div class="tc l6">
+                    <div class="th" onclick="tog(this)">
+                        <span class="tn">F18</span>
+                        <div class="tw">
+                            <div class="tt">Termékek nyilvántartása</div>
+                            <div class="tg">
+                                <span class="tag">összetett feladat</span><span class="tag">több algoritmus</span
+                                ><span class="tag">függvények</span>
+                            </div>
+                        </div>
+                        <span class="tto">▼</span>
+                    </div>
+                    <div class="tb">
+                        <div class="tx">
+                            <p>Kérj be n termék nevét és árát (egész Ft)! Függvényekkel oldd meg:</p>
+                            <ol>
+                                <li><code>legdragabb(nevek, arak)</code> — a legdrágább termék neve és ára</li>
+                                <li><code>olcso_termekek(nevek, arak, hatar)</code> — azok neve, amelyek olcsóbbak a határárnál</li>
+                                <li><code>atlagos_ar(arak)</code> — az átlagos ár egész számra kerekítve</li>
+                                <li><code>dragabb_az_atlagnal(nevek, arak)</code> — hány termék drágább az átlagnál?</li>
+                            </ol>
+                            <div class="note">
+                                <strong>Fogalmak:</strong> Összes előző fogalom kombinálva. A 4. függvény a 3.-at hívja meg belül. Érettségi
+                                szintű összetettség.
+                            </div>
+                        </div>
+                        <button class="st2" onclick="togS(this)">▶ Megoldás</button>
+                        <div class="sb">
+                            <div class="cb">
+                                <span class="cl">Python</span>
+                                <pre><span class="k">def</span> <span class="f">legdragabb</span>(nevek, arak):
     maxi <span class="o">=</span> <span class="n">0</span>
     <span class="k">for</span> i <span class="k">in</span> <span class="f">range</span>(<span class="f">len</span>(arak)):
         <span class="k">if</span> arak[i] <span class="o">&gt;</span> arak[maxi]:
@@ -840,30 +1570,36 @@ hatar <span class="o">=</span> <span class="f">int</span>(<span class="f">input<
 <span class="f">print</span>(<span class="s">"Olcsó termékek:"</span>, <span class="f">olcso_termekek</span>(nevek, arak, hatar))
 
 <span class="f">print</span>(<span class="s">"Átlagos ár:"</span>, <span class="f">atlagos_ar</span>(arak), <span class="s">"Ft"</span>)
-<span class="f">print</span>(<span class="s">"Átlagnál drágább termékek:"</span>, <span class="f">dragabb_az_atlagnal</span>(nevek, arak))</pre></div></div>
-      <div class="pr"><span class="pl">Nehézség <span style="color:var(--lc)">●●●●●●</span></span><span class="pv">18 pt</span></div>
-    </div>
-  </div>
+<span class="f">print</span>(<span class="s">"Átlagnál drágább termékek:"</span>, <span class="f">dragabb_az_atlagnal</span>(nevek, arak))</pre>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <span class="pl">Nehézség <span style="color: var(--lc)">●●●●●●</span></span
+                            ><span class="pv">18 pt</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
 
-</section>
-</main>
-
-<script>
-function show(id) {
-  document.querySelectorAll('.sec').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.querySelectorAll('.nb').forEach(b => b.classList.toggle('active', b.dataset.s === id));
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-function tog(h) {
-  const b = h.nextElementSibling, a = h.querySelector('.tto');
-  b.classList.toggle('open');
-  a.classList.toggle('open');
-}
-function togS(btn) {
-  const b = btn.nextElementSibling, o = b.classList.toggle('open');
-  btn.textContent = o ? '▼ Megoldás elrejtése' : '▶ Megoldás';
-}
-</script>
-</body>
+        <script>
+            function show(id) {
+                document.querySelectorAll('.sec').forEach((s) => s.classList.remove('active'));
+                document.getElementById(id).classList.add('active');
+                document.querySelectorAll('.nb').forEach((b) => b.classList.toggle('active', b.dataset.s === id));
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            function tog(h) {
+                const b = h.nextElementSibling,
+                    a = h.querySelector('.tto');
+                b.classList.toggle('open');
+                a.classList.toggle('open');
+            }
+            function togS(btn) {
+                const b = btn.nextElementSibling,
+                    o = b.classList.toggle('open');
+                btn.textContent = o ? '▼ Megoldás elrejtése' : '▶ Megoldás';
+            }
+        </script>
+    </body>
 </html>
